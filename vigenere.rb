@@ -20,16 +20,15 @@ class Vigenere
 
   def rotation_for_encryption
     message_index.map.with_index {|num, index|
-      (num + (rotation[index % 5]) ) % 30}
+      (num + (rotation[index % key_word.length]) ) % 30}
   end
 
   def vigenere
-    rotation_for_encryption.map { |num| character_map[num]}.join
+    rotation_for_encryption.map { |num| character_map[num]}.join("")
   end
-
 end
 
 if __FILE__ == $PROGRAM_NAME
-  text = Vigenere.new("Bacon", "taylor Make PHP great again.")
+  text = Vigenere.new("taylor", "Make PHP great again")
   puts text.vigenere
 end
